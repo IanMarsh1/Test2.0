@@ -11,6 +11,7 @@ const router = express.Router( );
 const fs = require( 'fs' );
 const path = require( 'path' );
 const fileUpload = require( "express-fileupload" );
+const rateLimit = require('express-rate-limit');
 
 // controllers
 const userController = require( '../controller/userController' );
@@ -33,7 +34,6 @@ router.use(
 );
 
 // https://github.com/IanMarsh1/Test2.0/security/code-scanning/29
-const rateLimit = require('express-rate-limit');
 
 const googleSignUpLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, // 1 hour window
@@ -76,7 +76,6 @@ router.route( '/revalidate/:email' )
 
 
 // https://github.com/IanMarsh1/Test2.0/security/code-scanning/30
-const rateLimit = require('express-rate-limit');
 
 // Configure the rate limiter
 const uploadLimiter = rateLimit({

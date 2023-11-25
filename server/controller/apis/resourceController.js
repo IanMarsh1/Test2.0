@@ -345,7 +345,16 @@ exports.saveResource = async ( req, res, redirect ) => {
                 
             }
             else if( resource ) {
-                await file.mv( resourceUploadPath + timeStamp + file.name, async ( err ) => {
+                // https://github.com/IanMarsh1/Test2.0/security/code-scanning/6
+
+                const timeStamp = Date.now();
+                const fileExtension = file.name.split('.').pop(); // Extracting the extension
+                const safeFileName = timeStamp + '_upload.' + fileExtension.replace(/[^a-z0-9]/gi, '_'); // Sanitizing and constructing a new file name
+
+                // Construct the file path
+                const uploadPath = resourceUploadPath + safeFileName;
+
+                await file.mv(uploadPath, async (err) => {
                     if ( err ) {
                         console.log( "Error uploading profile picture : " + err );
                         if( redirect ) {
