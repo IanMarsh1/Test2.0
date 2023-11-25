@@ -32,8 +32,17 @@ router.use(
     fileUpload()
 );
 
+// https://github.com/IanMarsh1/Test2.0/security/code-scanning/29
+const rateLimit = require('express-rate-limit');
+
+const googleSignUpLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour window
+    max: 5, // start blocking after 5 requests
+    message: "Too many accounts created from this IP, please try again after an hour"
+});
+
 router.route( '/google' )
-    .post( async function( req, res ) {
+    .post(googleSignUpLimiter, async function( req, res ) {
         userController.googleSignUp( req, res );
     } );
 
@@ -65,8 +74,20 @@ router.route( '/revalidate/:email' )
     }
     );
 
-router.route( '/uploadProfilePicture' )
-    .post( async ( req, res ) => {
+
+// https://github.com/IanMarsh1/Test2.0/security/code-scanning/30
+const rateLimit = require('express-rate-limit');
+
+// Configure the rate limiter
+const uploadLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 10, // Limit each IP to 10 upload attempts per windowMs
+    message: "Too many uploads from this IP, please try again after 15 minutes"
+});
+
+// Apply the rate limiter to the upload route
+router.route('/uploadProfilePicture')
+    .post(uploadLimiter, async ( req, res ) => {
 
 
         if ( !req.files || Object.keys( req.files ).length === 0 ) {
