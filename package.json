@@ -1,0 +1,58 @@
+{
+  "name": "agora",
+  "version": "1.0.0",
+  "description": "Agora: Open, decentralized learning system",
+  "main": "server/agora.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-pg-simple": "^7.0.0",
+    "cors": "^2.8.5",
+    "device-detector-js": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-response-hooks": "^1.0.4",
+    "express-session": "^1.17.2",
+    "google-auth-library": "^8.7.0",
+    "node-fetch": "^2.6.7",
+    "nodemailer": "^6.7.2",
+    "openai": "^3.1.0",
+    "path": "^0.12.7",
+    "pg": "^8.6.0",
+    "stripe": "^8.191.0",
+    "suneditor": "^2.43.9",
+    "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^8.3.2",
+    "yamljs": "^0.3.0",
+    "zod": "^3.19.1"
+  },
+  "scripts": {
+    "start": "node ./server/agora.js",
+    "dev": "nodemon ./server/agora.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint-full": "eslint ./",
+    "lint-client": "eslint ./client",
+    "lint-server": "eslint ./server",
+    "lint-full-fix": "eslint . --fix",
+    "lint-server-fix": "eslint ./server --fix",
+    "lint-client-fix": "eslint ./server --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briangormanly/agora.git"
+  },
+  "keywords": [
+    "agora"
+  ],
+  "author": "brian.gormanly",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/briangormanly/agora/issues"
+  },
+  "homepage": "https://github.com/briangormanly/agora#readme",
+  "devDependencies": {
+    "eslint": "^8.25.0"
+  }
+}

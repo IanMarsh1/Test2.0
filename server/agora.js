@@ -89,10 +89,7 @@ if ( app.get( "env" ) === "production" ) {
     sess.cookie.secure = true; // serve secure cookies
 }
 
-csrf = require('lusca').csrf;
-
 app.use( session( sess ) );
-app.use(csrf());
 
 
 
