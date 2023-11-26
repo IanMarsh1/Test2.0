@@ -614,14 +614,9 @@ exports.saveResourcesForTopic = async function( topicId, resourceIds, resourcesR
              * This probably means having the pathway be an array of objects containing id and isRequired
              */
             if( resourceIds && resourceIds.length > 0 ) {
-                let resourceIdsLength = resourceIds.length;
+                const resourceCount = Math.min(resourceIds.length, 10000);
 
-                if ( resourceIds.length >= 10000 ){
-                    console.log("[WARN]: Error [Topic] - save resources for topic - Too many resources, please limit to 10,000 or less");
-                    resourceIdsLength = 10000;
-                }
-
-                for( let i=0; i < resourceIdsLength; i++ ) {
+                for( let i=0; i < resourceCount; i++ ) {
                     let isRequired = true;
                     if( resourcesRequired.length > i ) {
                         isRequired = resourcesRequired[i];
