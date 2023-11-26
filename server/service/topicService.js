@@ -613,8 +613,15 @@ exports.saveResourcesForTopic = async function( topicId, resourceIds, resourcesR
              * TODO: is_required needs to be passed in from the UI so we are just making everything required for now.  
              * This probably means having the pathway be an array of objects containing id and isRequired
              */
-            if( resourceIds && (resourceIds.length > 0 && resourceIds.length < 10000)) {
-                for( let i=0; i < resourceIds.length; i++ ) {
+            if( resourceIds && resourceIds.length > 0 ) {
+                let resourceIdsLength = resourceIds.length;
+
+                if ( resourceIds.length >= 10000 ){
+                    console.log("[WARN]: Error [Topic] - save resources for topic - Too many resources, please limit to 10,000 or less");
+                    resourceIdsLength = 10000;
+                }
+
+                for( let i=0; i < resourceIdsLength; i++ ) {
                     let isRequired = true;
                     if( resourcesRequired.length > i ) {
                         isRequired = resourcesRequired[i];
