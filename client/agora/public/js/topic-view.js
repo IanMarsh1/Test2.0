@@ -439,7 +439,7 @@ function newTag( tagName, isNewSave ) {
 
         // create the tag and add to existing tags
         li.setAttribute( "class", "tag-list-element" );
-        li.innerHTML = tagName;
+        li.textContent = tagName;
         addTagToWorkspace( li, isNewSave );
         currTagList.push( tagName );
     }
@@ -468,7 +468,7 @@ function addTagToWorkspace( selectedTag, isNewSave ) {
     const tagType = isTopic ? "topic" : "workspace";
 
 
-    newTag.innerHTML = selectedTag.innerHTML;
+    newTag.textContent = selectedTag.textContent;
     newTag.setAttribute( "class", "styled-tags" );
     newTag.setAttribute( "id", "tag-" + newTag.innerHTML );
         
