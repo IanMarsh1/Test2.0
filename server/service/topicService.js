@@ -613,7 +613,7 @@ exports.saveResourcesForTopic = async function( topicId, resourceIds, resourcesR
              * TODO: is_required needs to be passed in from the UI so we are just making everything required for now.  
              * This probably means having the pathway be an array of objects containing id and isRequired
              */
-            if( resourceIds && resourceIds.length > 0 ) {
+            if( resourceIds && (resourceIds.length > 0 && resourceIds.length < 10000)) {
                 for( let i=0; i < resourceIds.length; i++ ) {
                     let isRequired = true;
                     if( resourcesRequired.length > i ) {
