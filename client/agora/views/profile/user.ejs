@@ -46,7 +46,7 @@
                             
                             
                             <div id="user-badges">
-                                <h2><span class="text-primary" ><%- (!!user)?user.username:'' %></span></h2>
+                                <h2><span class="text-primary" ><%= (!!user)?user.username:'' %></span></h2>
                                 <%
                                 if( user && (user.admin || user.member || user.creator || user.codebot) ) {
                                     %>
@@ -54,6 +54,7 @@
                                     <%
                                 }
                                 %>
+                            </div>
                                 
                                 <%
                                 if(user && user.admin) {
